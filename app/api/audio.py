@@ -42,15 +42,15 @@ async def compare_audio(file1: UploadFile = File(...), file2: UploadFile = File(
         os.remove(file1_path)
         os.remove(file2_path)
 
-# 下载和弦识别
-@router.on_event('startup')
-async def startup_event():
-    repo_path = Path("app/audio_process/Guitar-Chord-Recognition")
-    if not repo_path.exists():
-        subprocess.run([
-            "git", "clone",
-            "git@github.com:W1412X/Guitar-Chord-Audio-Recognition.git",
-        ], check=True, cwd="app/audio_process")
+# # 下载和弦识别
+# @router.on_event('startup')
+# async def startup_event():
+#     repo_path = Path("app/audio_process/Guitar-Chord-Auido-Recognition")
+#     if not repo_path.exists():
+#         subprocess.run([
+#             "git", "clone",
+#             "git@github.com:W1412X/Guitar-Chord-Audio-Recognition.git",
+#         ], check=True, cwd="app/audio_process")
 
 # 上传音频文件并识别和弦
 @router.post("/audio/recognize_chord")
