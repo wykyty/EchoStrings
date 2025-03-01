@@ -31,11 +31,18 @@ async def compare_audio(file1: UploadFile = File(...), file2: UploadFile = File(
         # 计算匹配度
         match_scores, mfcc_scores, pitch_scores, beats_scores = calculate_segment_match(file1_path, file2_path)
 
-        # 生成匹配度报告
-        report_path = generate_report(file1_path, file2_path, match_scores, mfcc_scores, pitch_scores, beats_scores)    
+        return JSONResponse({
+            "status": "success",
+            "match_scores": match_scores,
+            "mfcc_scores": mfcc_scores,
+            "pitch_scores": pitch_scores,
+            "beats_scores": beats_scores
+        })
+        # # 生成匹配度报告
+        # report_path = generate_report(file1_path, file2_path, match_scores, mfcc_scores, pitch_scores, beats_scores)    
 
-        # 返回匹配度报告
-        return FileResponse(report_path, media_type='application/pdf', filename='audio_match_report.pdf')
+        # # 返回匹配度报告
+        # return FileResponse(report_path, media_type='application/pdf', filename='audio_match_report.pdf')
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     finally:
