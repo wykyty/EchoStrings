@@ -5,8 +5,8 @@ from pathlib import Path
 import shutil
 import subprocess
 
-from ..audio_process.audio_match import calculate_segment_match, generate_report
-from ..audio_process.recognize_chord import recognize_chord
+from audio_process.audio_match import calculate_segment_match, generate_report
+from audio_process.recognize_chord import recognize_chord
 
 router = APIRouter()
 

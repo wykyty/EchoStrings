@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from .api.audio import router as audio_router
+from api.audio import router as audio_router
 
 app = FastAPI(title="EchoStrings")
 
