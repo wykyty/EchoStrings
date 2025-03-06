@@ -3,7 +3,7 @@ import subprocess
 def recognize_chord(audio_path: str) -> str:
     try:
         result = subprocess.run(
-            ["python", "app/audio_process/Guitar-Chord-Audio-Recognition/example/CChordRec.py", audio_path],
+            ["python", "app/audio_process/Guitar-Chord-Audio-Recognition/example/CChordRec.py"],
             capture_output=True,
             text=True,
             check=True
