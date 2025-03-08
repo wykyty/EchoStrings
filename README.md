@@ -1,8 +1,9 @@
 # EchoStrings
 弦音拾梦
 
-## 应用：
-在项目根目录执行：
+## 应用
 ```
-python -m uvicorn app.main:app --reload
+git clone git@github.com:wykyty/EchoStrings.git
+cd app
+python main.py
 ```
