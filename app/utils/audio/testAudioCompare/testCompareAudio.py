@@ -92,7 +92,13 @@ def getFileNames(dirPath, suffix):
 
 if __name__ == '__main__':
     fileNameList = getFileNames(os.path.curdir, '.wav')
+    for filename in fileNameList:
+        print(filename)
+
     sortedFileList = sortedNearFile(fileNameList, 100 * 1024)
+ 
+    
+
     for fileTupleList in sortedFileList:
         if len(fileTupleList) > 1:
             compareList = list()
