@@ -15,23 +15,23 @@ my_api_key = os.getenv("DASHSCOPE_API_KEY")
 my_app_id = "98fe03e7803a473cb63810c6284d85c0"
 
 class ChatRequest(BaseModel):   
-    user_id: int
+    user_id: str
     question: str
 
     @classmethod
     def as_form(
         cls,
-        user_id: int = Form(..., description="用户ID"),
+        user_id: str = Form(..., description="用户ID"),
         question: str = Form(..., description="问题")
     ):
         return cls(user_id=user_id, question=question)
 
 class ChatResponse(BaseModel):
-    user_id: int
+    user_id: str
     answer: str
 
 class MusicCreatRequest(BaseModel):
-    user_id: int
+    user_id: str
     title: str
     instr_id: str
     tuning: str
@@ -43,7 +43,7 @@ class MusicCreatRequest(BaseModel):
     @classmethod
     def as_form(
         cls,
-        user_id: int = Form(..., description="用户ID"),
+        user_id: str = Form(..., description="用户ID"),
         title: str = Form(..., description="乐曲标题"),
         instr_id: str = Form(..., description="乐器编号"),
         tuning: str = Form(..., description="吉他的调音"),
@@ -56,7 +56,7 @@ class MusicCreatRequest(BaseModel):
 
 # 普通对话
 @router.post('/chat', description="普通对话")
-async def chat(request: ChatRequest = Depends(ChatRequest.as_form)):
+async def chat(request: ChatRequest):
     user_id = request.user_id
     question = request.question
     upstream_response = Application.call(
@@ -80,7 +80,7 @@ async def chat(request: ChatRequest = Depends(ChatRequest.as_form)):
 
 # 乐谱创作
 @router.post('/music_creat', description="乐谱创作")
-async def music_creat(request: MusicCreatRequest = Depends(MusicCreatRequest.as_form)):
+async def music_creat(request: MusicCreatRequest):
     user_id = request.user_id
     title = request.title
     instr_id = request.instr_id
@@ -105,7 +105,6 @@ async def music_creat(request: MusicCreatRequest = Depends(MusicCreatRequest.as_
         return matches 
     # 对于乐谱创作的输出，进一步格式化
     def formatSingleScore(ori_content:str):
-        content=ori_content.split("\n")[6]
         content=ori_content.split("\n")[6]
         items=match_pattern(content)
         dealed_content=""

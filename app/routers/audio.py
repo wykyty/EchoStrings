@@ -32,20 +32,24 @@ async def compare_audio(
     file: UploadFile = File(..., description="上传的音频文件(支持wav/mp3)"),
     db: Session = Depends(get_db)
 ):
+    print("start")
     # 查找曲谱库中的文件并临时保存
     music = get_music_by_id(db, audio_id)
+    print("finish find music")
     if not music:
         raise HTTPException(status_code=404, detail="音频文件不存在")
     file1_path = os.path.join(temp_dir, f"{music.title}.mp3")
+    print("finish save music")
     response = requests.get(music.audio_file_path)
+    print("finish get music")
     with open(file1_path, 'wb') as f:
         f.write(response.content)
-
+    print("finish save music")
     # 保存上传的文件
     file2_path = os.path.join(temp_dir, file.filename)
     with open(file2_path, 'wb') as f:
-        shutil.copyfileobj(file.file, f)
-
+        f.write(await file.read())
+    print("start match")
     try: 
         # 计算匹配度
         match_scores, mfcc_scores, pitch_scores, beats_scores = calculate_segment_match(file1_path, file2_path)
@@ -66,21 +70,23 @@ async def compare_audio(
         os.remove(file2_path)
 
 # 上传音频文件并识别和弦
-@router.post("/recognize_chord")
+@router.post("/recognize_chord", description="上传音频文件并识别和弦")
 async def recognize_chord(file: UploadFile = File(..., description="上传的音频文件(支持wav/mp3)")):
     try:
+        print("start")
         # 保存文件
         temp_path = temp_dir / file.filename
+        print(temp_path)
         with open(temp_path, 'wb') as buffer:
             shutil.copyfileobj(file.file, buffer)
-
         # 验证类型
+        print("exmine type")
         if not file.filename.lower().endswith(('.wav', '.mp3')):
             raise HTTPException(status_code=400, detail="仅支持wav/mp3格式音频文件")
-
+        print("recognize chord")
         # 识别和弦
-        chord = model_recognize_chord(str(temp_path))
-
+        chord =model_recognize_chord(str(temp_path))
+        print("extract pitch")
         temp_path.unlink()
         return JSONResponse({
             "status": "success",
@@ -107,15 +113,18 @@ async def create_music(request: MusicSheetRequest, db: Session = Depends(get_db)
         if not user:
             raise HTTPException(status_code=404, detail="用户不存在")
 
-        # 保存文件
+        print("start")
         midi_path = f"{temp_dir}/{title}.mid"
         base64_to_midi(base64_date, midi_path)
+        print("to midi ok")
         audio_path = midi_to_audio(midi_path, temp_dir)
+        print("to audio ok")
         duration = MP3(audio_path).info.length
         # audio_length = librosa.get_duration(path=audio_path)
-
+        print("get duration ok")
         # 上传到服务器
         audio_db_path = upload_file(audio_path)
+        print("upload ok")
 
         # 保存到数据库
         db_sheet = MusicSheet(
