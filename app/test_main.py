@@ -2,6 +2,7 @@ from main import app
 from fastapi.testclient import TestClient
 from http import HTTPStatus
 from dashscope import Application
+import base64
 
 client = TestClient(app)
 
@@ -84,9 +85,27 @@ def test_ai_music_creat():
     response_data = response.json()
     print(response_data)
 
+def test_audio_sheet_upload():
+    midi_file = "data/我和我的祖国.mid"
+    # 将midi文件编码为base64格式
+    base64_data = base64.b64encode(open(midi_file, "rb").read())
+    base64_data = base64_data.decode("utf-8")
+    request = {
+        "title": "我和我的祖国",
+        "content": "我和我的祖国",
+        "base64_data": base64_data
+    }
+    
+    response = client.post("/audio/sheet/upload", json=request)
+    # assert response.status_code == 200
+    # assert response.status_code == HTTPStatus.OK, f"Expected status code {HTTPStatus.OK}, but got {response.status_code}"
+    
+    response_data = response.json()
+    print(response_data)
 
 if __name__ == "__main__":
 
-    test_ai_chat()
+    # test_ai_chat()
     # test_chat_failure()
-    test_ai_music_creat()
+    # test_ai_music_creat()
+    test_audio_sheet_upload()

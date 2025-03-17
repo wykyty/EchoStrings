@@ -1,0 +1,1078 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "EchoStrings",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/activity/publish": {
+        "post": {
+          "tags": [
+            "Activity"
+          ],
+          "summary": "Publish Activity",
+          "operationId": "publish_activity_activity_publish_post",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/post/create": {
+        "post": {
+          "tags": [
+            "Post"
+          ],
+          "summary": "Create Post",
+          "operationId": "create_post_post_create_post",
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_create_post_post_create_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/post/list": {
+        "get": {
+          "tags": [
+            "Post"
+          ],
+          "summary": "Get Post List",
+          "operationId": "get_post_list_post_list_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/post/{post_id}": {
+        "get": {
+          "tags": [
+            "Post"
+          ],
+          "summary": "Get Post Detail",
+          "operationId": "get_post_detail_post__post_id__get",
+          "parameters": [
+            {
+              "name": "post_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "description": "帖子ID",
+                "title": "Post Id"
+              },
+              "description": "帖子ID"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/post/{post_id}/like": {
+        "post": {
+          "tags": [
+            "Post"
+          ],
+          "summary": "Like Post",
+          "operationId": "like_post_post__post_id__like_post",
+          "parameters": [
+            {
+              "name": "post_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "description": "帖子ID",
+                "title": "Post Id"
+              },
+              "description": "帖子ID"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/ai/chat": {
+        "post": {
+          "tags": [
+            "AI"
+          ],
+          "summary": "Chat",
+          "operationId": "chat_ai_chat_post",
+          "requestBody": {
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_chat_ai_chat_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/ai/music_creat": {
+        "post": {
+          "tags": [
+            "AI"
+          ],
+          "summary": "Music Creat",
+          "operationId": "music_creat_ai_music_creat_post",
+          "requestBody": {
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_music_creat_ai_music_creat_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/audio/match": {
+        "post": {
+          "tags": [
+            "Audio"
+          ],
+          "summary": "Compare Audio",
+          "operationId": "compare_audio_audio_match_post",
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_compare_audio_audio_match_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/audio/recognize_chord": {
+        "post": {
+          "tags": [
+            "Audio"
+          ],
+          "summary": "Recognize Chord",
+          "operationId": "recognize_chord_audio_recognize_chord_post",
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_recognize_chord_audio_recognize_chord_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/audio/sheet/upload": {
+        "post": {
+          "tags": [
+            "Audio"
+          ],
+          "summary": "Create Music",
+          "operationId": "create_music_audio_sheet_upload_post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MusicSheetRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/audio/sheet/list": {
+        "get": {
+          "tags": [
+            "Audio"
+          ],
+          "summary": "Get Music Sheets",
+          "operationId": "get_music_sheets_audio_sheet_list_get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/audio/sheet/{id}": {
+        "get": {
+          "tags": [
+            "Audio"
+          ],
+          "summary": "Get Music Sheet",
+          "operationId": "get_music_sheet_audio_sheet__id__get",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "description": "曲谱id",
+                "title": "Id"
+              },
+              "description": "曲谱id"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/user/register": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Register",
+          "operationId": "register_user_register_post",
+          "requestBody": {
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_register_user_register_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/user/login": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Login",
+          "operationId": "login_user_login_post",
+          "requestBody": {
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_login_user_login_post"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/user/{username}": {
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Get User Info By Username",
+          "operationId": "get_user_info_by_username_user__username__get",
+          "parameters": [
+            {
+              "name": "username",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 50,
+                "description": "Username, 1-50位",
+                "title": "Username"
+              },
+              "description": "Username, 1-50位"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/user/{user_id}": {
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Get User Info By Id",
+          "operationId": "get_user_info_by_id_user__user_id__get",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "User ID, 1以上",
+                "title": "User Id"
+              },
+              "description": "User ID, 1以上"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Update User Info",
+          "operationId": "update_user_info_user__user_id__put",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "User ID, 1以上",
+                "title": "User Id"
+              },
+              "description": "User ID, 1以上"
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "$ref": "#/components/schemas/Body_update_user_info_user__user_id__put"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Delete User Info",
+          "operationId": "delete_user_info_user__user_id__delete",
+          "parameters": [
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "description": "User ID, 1以上",
+                "title": "User Id"
+              },
+              "description": "User ID, 1以上"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/": {
+        "get": {
+          "summary": "Root",
+          "operationId": "root__get",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+  
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Body_chat_ai_chat_post": {
+          "properties": {
+            "user_id": {
+              "type": "string",
+              "title": "User Id",
+              "description": "用户ID"
+            },
+            "question": {
+              "type": "string",
+              "title": "Question",
+              "description": "问题"
+            }
+          },
+          "type": "object",
+          "required": [
+            "user_id",
+            "question"
+          ],
+          "title": "Body_chat_ai_chat_post"
+        },
+        "Body_compare_audio_audio_match_post": {
+          "properties": {
+            "audio_id": {
+              "type": "integer",
+              "title": "Audio Id"
+            },
+            "file": {
+              "type": "string",
+              "format": "binary",
+              "title": "File",
+              "description": "上传的音频文件(支持wav/mp3)"
+            }
+          },
+          "type": "object",
+          "required": [
+            "audio_id",
+            "file"
+          ],
+          "title": "Body_compare_audio_audio_match_post"
+        },
+        "Body_create_post_post_create_post": {
+          "properties": {
+            "files": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Files",
+              "description": "支持图片/视频文件"
+            },
+            "author_name": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 1,
+              "title": "Author Name",
+              "description": "Author name"
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 1,
+              "title": "Title",
+              "description": "Title"
+            },
+            "content": {
+              "type": "string",
+              "title": "Content",
+              "description": "Content"
+            }
+          },
+          "type": "object",
+          "required": [
+            "author_name",
+            "title"
+          ],
+          "title": "Body_create_post_post_create_post"
+        },
+        "Body_login_user_login_post": {
+          "properties": {
+            "username": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 1,
+              "title": "Username",
+              "description": "Username, 1-50位"
+            },
+            "password": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 6,
+              "title": "Password",
+              "description": "Password, 最短6位"
+            }
+          },
+          "type": "object",
+          "required": [
+            "username",
+            "password"
+          ],
+          "title": "Body_login_user_login_post"
+        },
+        "Body_music_creat_ai_music_creat_post": {
+          "properties": {
+            "user_id": {
+              "type": "string",
+              "title": "User Id",
+              "description": "用户ID"
+            },
+            "title": {
+              "type": "string",
+              "title": "Title",
+              "description": "乐曲标题"
+            },
+            "instr_id": {
+              "type": "string",
+              "title": "Instr Id",
+              "description": "乐器编号"
+            },
+            "tuning": {
+              "type": "string",
+              "title": "Tuning",
+              "description": "吉他的调音"
+            },
+            "tempo": {
+              "type": "string",
+              "title": "Tempo",
+              "description": "乐谱的tempo"
+            },
+            "artist": {
+              "type": "string",
+              "title": "Artist",
+              "description": "乐曲作者"
+            },
+            "time": {
+              "type": "string",
+              "title": "Time",
+              "description": "乐谱的演奏时间"
+            },
+            "style_desc": {
+              "type": "string",
+              "title": "Style Desc",
+              "description": "乐曲风格描述"
+            }
+          },
+          "type": "object",
+          "required": [
+            "user_id",
+            "title",
+            "instr_id",
+            "tuning",
+            "tempo",
+            "artist",
+            "time",
+            "style_desc"
+          ],
+          "title": "Body_music_creat_ai_music_creat_post"
+        },
+        "Body_recognize_chord_audio_recognize_chord_post": {
+          "properties": {
+            "file": {
+              "type": "string",
+              "format": "binary",
+              "title": "File",
+              "description": "上传的音频文件(支持wav/mp3)"
+            }
+          },
+          "type": "object",
+          "required": [
+            "file"
+          ],
+          "title": "Body_recognize_chord_audio_recognize_chord_post"
+        },
+        "Body_register_user_register_post": {
+          "properties": {
+            "avatar": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "binary"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Avatar"
+            },
+            "username": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 1,
+              "title": "Username",
+              "description": "Username, 1-50位"
+            },
+            "password": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 6,
+              "title": "Password",
+              "description": "Password, 最短6位"
+            },
+            "level": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Level",
+              "description": "Level, 0-100"
+            }
+          },
+          "type": "object",
+          "required": [
+            "username",
+            "password",
+            "level"
+          ],
+          "title": "Body_register_user_register_post"
+        },
+        "Body_update_user_info_user__user_id__put": {
+          "properties": {
+            "avatar": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "binary"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Avatar"
+            },
+            "username": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 1,
+              "title": "Username",
+              "description": "Username, 1-50位"
+            },
+            "password": {
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 6,
+              "title": "Password",
+              "description": "Password, 最短6位"
+            },
+            "level": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Level",
+              "description": "Level, 0-100"
+            }
+          },
+          "type": "object",
+          "required": [
+            "username",
+            "password",
+            "level"
+          ],
+          "title": "Body_update_user_info_user__user_id__put"
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "MusicSheetRequest": {
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Title"
+            },
+            "content": {
+              "type": "string",
+              "title": "Content"
+            },
+            "base64_data": {
+              "type": "string",
+              "title": "Base64 Data"
+            }
+          },
+          "type": "object",
+          "required": [
+            "title",
+            "content",
+            "base64_data"
+          ],
+          "title": "MusicSheetRequest"
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        }
+      }
+    }
+  }
